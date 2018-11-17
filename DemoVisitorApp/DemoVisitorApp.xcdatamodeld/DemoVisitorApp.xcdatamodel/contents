@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DeviceActivationDetails" representedClassName="DeviceActivationDetails" syncable="YES">
+        <attribute name="appuiBackground" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appuiCheckinbtntxt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appuiCheckoutbtntxt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appuiFontcolor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appuiShowcheckoutbtn" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="checkoutmessage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceUniqueId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="errorCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="errorHeading" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="errorMessage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hasError" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isAgreement" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isRepeated" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isVisitorphoto" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="logoURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="responseApikey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="welcometxt" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="deviceDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserDeviceDetails" inverseName="activationsDetails" inverseEntity="UserDeviceDetails" syncable="YES"/>
+    </entity>
+    <entity name="UserDeviceDetails" representedClassName="UserDeviceDetails" syncable="YES">
+        <attribute name="activatebtntxt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="activation_code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceUniqueId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="errorCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="errorHeading" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="errorMessage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hasError" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="topline1text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="topline2text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="activationsDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DeviceActivationDetails" inverseName="deviceDetails" inverseEntity="DeviceActivationDetails" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DeviceActivationDetails" positionX="-54" positionY="27" width="128" height="315"/>
+        <element name="UserDeviceDetails" positionX="-63" positionY="-18" width="128" height="195"/>
+    </elements>
+</model>

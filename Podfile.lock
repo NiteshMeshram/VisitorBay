@@ -1,0 +1,36 @@
+PODS:
+  - Alamofire (4.7.1)
+  - CropViewController (2.3.8)
+  - Kingfisher (4.7.0)
+  - PKCCrop (0.2.4)
+  - SKActivityIndicatorView (0.1.0)
+  - SwiftyJSON (4.0.0)
+
+DEPENDENCIES:
+  - Alamofire (= 4.7.1)
+  - CropViewController
+  - Kingfisher (= 4.7.0)
+  - PKCCrop (= 0.2.4)
+  - SKActivityIndicatorView (= 0.1.0)
+  - SwiftyJSON (= 4.0.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - CropViewController
+    - Kingfisher
+    - PKCCrop
+    - SKActivityIndicatorView
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  CropViewController: 7be882b7d3fb3faef48a41924e80f689e9df2514
+  Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
+  PKCCrop: ffee8530f35380fd69e562eb40ea2536a6c0a5cf
+  SKActivityIndicatorView: f46936f760d33eb8235333242269bf01cc9248ae
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+
+PODFILE CHECKSUM: 56f3d65a4067525d014eae3abff94929d0fd3d39
+
+COCOAPODS: 1.5.3
