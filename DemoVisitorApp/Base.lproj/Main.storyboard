@@ -747,7 +747,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agreement Sigining " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aF-yf-Ehb" userLabel="Agreement Sigining">
-                                <rect key="frame" x="384" y="48" width="216.5" height="30"/>
+                                <rect key="frame" x="384" y="48" width="257" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="q3U-2M-oMm"/>
                                 </constraints>
@@ -893,6 +893,28 @@ of the circle for a photo</string>
                                     <constraint firstAttribute="height" constant="76" id="Vba-DJ-wo0"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jh5-RS-hOW">
+                                <rect key="frame" x="379" y="451" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="M2m-Ad-1df"/>
+                                    <constraint firstAttribute="width" constant="48" id="T4m-n5-9mp"/>
+                                </constraints>
+                                <state key="normal" image="click-again"/>
+                                <connections>
+                                    <action selector="retakeButtonClick:" destination="CXw-CI-j1h" eventType="touchUpInside" id="jfV-nE-PNY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbp-9L-QQh">
+                                <rect key="frame" x="596" y="451" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="5yf-0J-6dZ"/>
+                                    <constraint firstAttribute="width" constant="48" id="lyC-dj-fcv"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="done-icon"/>
+                                <connections>
+                                    <action selector="doneButtonClick:" destination="CXw-CI-j1h" eventType="touchUpInside" id="gf3-wp-5w6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -910,6 +932,10 @@ of the circle for a photo</string>
                             <constraint firstItem="rJH-0R-hOH" firstAttribute="centerX" secondItem="Tup-oy-b8B" secondAttribute="centerX" id="A2z-4p-OBc"/>
                             <constraint firstItem="Ndn-vj-OKp" firstAttribute="centerX" secondItem="rJH-0R-hOH" secondAttribute="centerX" id="H0k-YX-gB3"/>
                             <constraint firstItem="yyd-MW-sQf" firstAttribute="top" secondItem="Ndn-vj-OKp" secondAttribute="bottom" constant="1" id="LCe-55-Nts"/>
+                            <constraint firstItem="37d-z5-oEa" firstAttribute="leading" secondItem="jh5-RS-hOW" secondAttribute="trailing" constant="-83" id="MBJ-Hb-TzC"/>
+                            <constraint firstItem="nbp-9L-QQh" firstAttribute="top" secondItem="37d-z5-oEa" secondAttribute="bottom" constant="-177.5" id="NeD-1b-EuZ"/>
+                            <constraint firstItem="nbp-9L-QQh" firstAttribute="leading" secondItem="37d-z5-oEa" secondAttribute="trailing" constant="-85" id="Oe0-BW-8PQ"/>
+                            <constraint firstItem="jh5-RS-hOW" firstAttribute="top" secondItem="37d-z5-oEa" secondAttribute="bottom" constant="-177.5" id="OhJ-jN-Kqr"/>
                             <constraint firstItem="jlf-Nh-hFK" firstAttribute="trailing" secondItem="iCi-6p-SSS" secondAttribute="trailing" constant="20" id="Qoy-mb-T1g"/>
                             <constraint firstItem="bY9-Wh-BTx" firstAttribute="leading" secondItem="yyd-MW-sQf" secondAttribute="leading" constant="23" id="Zmi-PS-JsL"/>
                             <constraint firstItem="ca4-h6-nXJ" firstAttribute="leading" secondItem="jlf-Nh-hFK" secondAttribute="leading" constant="18" id="a2Q-kQ-4lf"/>
@@ -936,6 +962,8 @@ of the circle for a photo</string>
                         <outlet property="companyLogo" destination="rJH-0R-hOH" id="1Mu-HU-B6K"/>
                         <outlet property="countdown" destination="CUf-c0-Axk" id="hW7-SZ-LG0"/>
                         <outlet property="dateTimeLabel" destination="iCi-6p-SSS" id="FIG-A7-Twy"/>
+                        <outlet property="doneProfileButton" destination="nbp-9L-QQh" id="opN-Cp-hKH"/>
+                        <outlet property="takeProfileButton" destination="jh5-RS-hOW" id="nWM-A1-m2h"/>
                         <segue destination="uBE-vH-E53" kind="push" identifier="thankyouSegue" id="wQ5-Zu-j5E"/>
                     </connections>
                 </viewController>
@@ -1237,6 +1265,8 @@ You have been successfully checked out.</string>
         <image name="blue-corner" width="312" height="281"/>
         <image name="checkin_btn" width="133" height="162"/>
         <image name="checkout_btn" width="133" height="162"/>
+        <image name="click-again" width="48" height="48"/>
+        <image name="done-icon" width="48" height="48"/>
         <image name="exclamation" width="129" height="85"/>
         <image name="hbb" width="169" height="11"/>
         <image name="horizontalLine" width="178" height="1"/>

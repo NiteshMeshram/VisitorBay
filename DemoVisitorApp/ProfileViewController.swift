@@ -20,6 +20,8 @@ class ProfileViewController: BaseviewController, UINavigationControllerDelegate 
     @IBOutlet weak var dateTimeLabel: UILabel!
     var format : DateFormatter!
     
+    @IBOutlet weak var doneProfileButton: UIButton!
+    @IBOutlet weak var takeProfileButton: UIButton!
     let captureSession = AVCaptureSession()
     var captureDevice : AVCaptureDevice?
     var previewLayer : AVCaptureVideoPreviewLayer?
@@ -51,6 +53,10 @@ class ProfileViewController: BaseviewController, UINavigationControllerDelegate 
         cameraView.clipsToBounds = true
         
         self.countdown.isHidden = true
+        
+        self.takeProfileButton.isHidden = true
+        self.doneProfileButton.isHidden = true
+        
         
         let date = Date()
         format = CheapDateFormatter.formatter()
@@ -84,6 +90,19 @@ class ProfileViewController: BaseviewController, UINavigationControllerDelegate 
             let jsonData = sender as!  JSON
             theDestination.thankYorResponse = jsonData
         }
+    }
+    
+    @IBAction func retakeButtonClick(_ sender: Any) {
+        self.takingPhoto = false
+        self.cameraView.isHidden = false
+        self.canvasImage.isHidden = true
+        self.clickProfilePicture()
+        
+    }
+    
+    @IBAction func doneButtonClick(_ sender: Any) {
+        self.doneProfileButton.isHidden = true
+        self.takeProfileButton.isHidden = true
     }
     
     @IBAction func nextButtonClick(_ sender: Any) {
@@ -156,6 +175,9 @@ class ProfileViewController: BaseviewController, UINavigationControllerDelegate 
     
     func clickProfilePicture() {
         
+        self.takeProfileButton.isHidden = true
+        self.doneProfileButton.isHidden = true
+        
         self.countdown.isHidden = false
         if self.takingPhoto {
             return
@@ -167,7 +189,9 @@ class ProfileViewController: BaseviewController, UINavigationControllerDelegate 
         let aSelector : Selector = #selector(ProfileViewController.updateTime)
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: aSelector, userInfo: nil, repeats: true)
         self.startTime = Date.timeIntervalSinceReferenceDate
+        self.countdown.text = "5"
     }
+    
     
     // Timer for photo click
     @objc func updateTime() {
@@ -219,6 +243,7 @@ class ProfileViewController: BaseviewController, UINavigationControllerDelegate 
                             let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer)
 //                            self.didTakePhoto(imageData!)
                             self.cameraView.isHidden = true
+                            self.canvasImage.isHidden = false
 //                            self.canvasImage.image = UIImage(data: imageData!)
                             
                             if let image = UIImage(data: imageData!) {
@@ -228,6 +253,8 @@ class ProfileViewController: BaseviewController, UINavigationControllerDelegate 
                                     let updatedImage = UIImage(cgImage: image.cgImage!, scale: 1.0, orientation: orientation)
                                     
                                     self.canvasImage.image = updatedImage
+                                    self.takeProfileButton.isHidden = false
+                                    self.doneProfileButton.isHidden = false
                                     
 //                                    UIImageWriteToSavedPhotosAlbum(updatedImage, nil, nil, nil)
                                     
