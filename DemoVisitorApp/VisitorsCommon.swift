@@ -302,6 +302,23 @@ extension UserDeviceDetails {
                        
                         
                         if userDevice.activationsDetails != nil {
+                            
+                            if let agreement = jsonString["agreement"].dictionary {
+//                                print(agreement)
+                                if let isagreement = agreement["isagreement"]?.stringValue.lowercased().toBool() {
+                                    userDevice.activationsDetails?.isAgreement = isagreement
+//                                    userDevice.activationsDetails?.isAgreement = false
+                                }
+                            }
+                            
+                            if let visitorphoto = jsonString["visitorphoto"].dictionary {
+//                                print(visitorphoto)
+                                if let isvisitorphoto = visitorphoto["isvisitorphoto"]?.stringValue.lowercased().toBool() {
+                                    userDevice.activationsDetails?.isVisitorphoto = isvisitorphoto
+//                                    userDevice.activationsDetails?.isVisitorphoto = false
+                                }
+                            }
+                            
                              /* Start 1 */
                             if let appui = jsonString["appui"].dictionary {
                                 if let fontcolor = appui["fontcolor"]?.stringValue{
@@ -409,5 +426,15 @@ extension UserDeviceDetails {
             
         }
         return nil
+    }
+}
+
+extension String {
+    func toBool() -> Bool{
+        if self == "false" {
+            return false
+        }else{
+            return true
+        }
     }
 }

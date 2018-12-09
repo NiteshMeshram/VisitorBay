@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 import UIKit
 
@@ -72,7 +73,19 @@ class AgreementViewController: BaseviewController, YPSignatureDelegate,UIWebView
                 
                 VisitorsDetailsManager.shared.finalUserData.updateValue(signatureBase64, forKey: "signatureBase64")
             }
-            performSegue(withIdentifier: "profileSegue", sender: nil)
+//            performSegue(withIdentifier: "profileSegue", sender: nil)
+
+            if let activationDetails = DeviceActivationDetails.checkDataExistOrNot(){
+                    if activationDetails.isVisitorphoto {
+                        performSegue(withIdentifier: "profileSegue", sender: nil)
+                    }
+                    else {
+//                        performSegue(withIdentifier: "thankyouFromAgreementScreenSegue", sender: nil)
+                        saveData()
+                    }
+            }
+            
+            
         } else {
             self.showValidationAlert(title: "Error", message: "You must signing this document before continuing")
         }
@@ -80,6 +93,50 @@ class AgreementViewController: BaseviewController, YPSignatureDelegate,UIWebView
         
         
     }
+    
+    func saveData() {
+        
+        var loginDict = [String: Any]()
+        
+        var deviceID = ""
+        if let deviceInfo = UserDeviceDetails.checkDataExistOrNot() {
+            deviceID = deviceInfo.deviceUniqueId!
+            loginDict = ["a":"save-visitor" ,
+                         "deviceid":deviceInfo.deviceUniqueId!,
+                         "formdata": VisitorsDetailsManager.shared.finalUserData]
+            
+        }
+        
+        DataManager.postUserData(userDetailDict: loginDict, deviceID: deviceID, closure: {Result in
+            
+            switch Result {
+            case .success(let userData):
+                
+                print(userData)
+                
+                if userData["response"]["status"].stringValue == VisitorError.resposeCode105.rawValue {
+                    self.performSegue(withIdentifier: "thankyouFromAgreementScreenSegue", sender: userData)
+                }
+                
+                break
+            case .failure(let errorMessage):
+                
+                print(errorMessage)
+                
+                break
+            }
+        })
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "thankyouFromAgreementScreenSegue" {
+            let theDestination = (segue.destination as! ThankyouViewController)
+            let jsonData = sender as!  JSON
+            theDestination.thankYorResponse = jsonData
+        }
+    }
+    
     
     @IBAction func backButtonClick(_ sender: Any) {
         

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XZg-dj-U6F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XZg-dj-U6F">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -69,7 +69,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="riB-yf-GwA">
-                                <rect key="frame" x="326" y="328" width="373" height="40"/>
+                                <rect key="frame" x="325.5" y="328" width="373" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Vpq-lY-yO5"/>
                                     <constraint firstAttribute="width" constant="373" id="cPo-UT-aGh"/>
@@ -247,7 +247,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visit-logo" translatesAutoresizingMaskIntoConstraints="NO" id="fEv-XB-uMh">
-                                <rect key="frame" x="379" y="40" width="267" height="125"/>
+                                <rect key="frame" x="378.5" y="40" width="267" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="267" id="3x8-E3-hPl"/>
                                     <constraint firstAttribute="height" constant="125" id="u1K-VI-qyx"/>
@@ -429,7 +429,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfC-Gd-3M9" userLabel="Meeting Button">
-                                <rect key="frame" x="349" y="339" width="164" height="139"/>
+                                <rect key="frame" x="349" y="339" width="329" height="139"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="139" id="t5d-cx-f7r"/>
                                 </constraints>
@@ -439,7 +439,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIN-Au-F4g" userLabel="Interview Button">
-                                <rect key="frame" x="555" y="339" width="165" height="139"/>
+                                <rect key="frame" x="720" y="339" width="165" height="139"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="139" id="5qh-XY-LHe"/>
                                     <constraint firstAttribute="width" constant="165" id="DAm-ax-HMp"/>
@@ -450,7 +450,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Lm-4e-EOI" userLabel="Vender Button">
-                                <rect key="frame" x="349" y="522" width="164" height="139"/>
+                                <rect key="frame" x="431.5" y="522" width="164" height="139"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="139" id="Y5T-fZ-Amy"/>
                                     <constraint firstAttribute="width" constant="164" id="sG2-pR-Rzd"/>
@@ -461,7 +461,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4C1-SG-p3S" userLabel="Personal Visit Button">
-                                <rect key="frame" x="555" y="522" width="164" height="139"/>
+                                <rect key="frame" x="637.5" y="522" width="164" height="139"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="164" id="j3x-Mf-Qmk"/>
                                     <constraint firstAttribute="height" constant="139" id="tIu-yy-td3"/>
@@ -598,6 +598,18 @@
                                     <constraint firstAttribute="height" constant="76" id="PGX-Mx-cVK"/>
                                 </constraints>
                             </imageView>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ey-3s-ptD" customClass="CustomUITextField" customModule="VisitorBay" customModuleProvider="target">
+                                <rect key="frame" x="326" y="334" width="373" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPR-xa-Doc">
+                                <rect key="frame" x="409" y="450" width="207" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Next"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -625,12 +637,15 @@
                         <outlet property="companyLogo" destination="C8C-LP-Nbo" id="6d0-KF-e02"/>
                         <outlet property="dateTimeLabel" destination="1ZF-ZP-U0X" id="18k-qh-J9t"/>
                         <outlet property="headerTitle" destination="9Oz-gu-u6A" id="CwZ-PB-1bI"/>
+                        <outlet property="userInputTextField" destination="4ey-3s-ptD" id="2M9-Bj-Wtw"/>
                         <segue destination="hDc-CQ-d7h" kind="push" identifier="agreementSegue" id="BeO-sL-buF"/>
+                        <segue destination="CXw-CI-j1h" kind="push" identifier="profileFromUserScreenSegue" id="LdF-dd-Buy"/>
+                        <segue destination="uBE-vH-E53" kind="push" identifier="thankyouFromUserScreenSegue" id="OiF-IJ-FZ5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tb-Pp-7bo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4135.9375" y="53.90625"/>
+            <point key="canvasLocation" x="4155" y="47"/>
         </scene>
         <!--Agreement View Controller-->
         <scene sceneID="7Xt-aH-njc">
@@ -706,7 +721,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8H9-li-MHb" userLabel="Stack View 2">
-                                        <rect key="frame" x="262.5" y="158" width="182.5" height="30"/>
+                                        <rect key="frame" x="262" y="158" width="182.5" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FyI-nX-agh">
                                                 <rect key="frame" x="0.0" y="5" width="73.5" height="20.5"/>
@@ -785,6 +800,7 @@
                         <outlet property="signatureView" destination="O69-7x-WeJ" id="Ydc-f1-HQ5"/>
                         <outlet property="webView" destination="oUr-e0-eZt" id="dnA-Zd-cwA"/>
                         <segue destination="CXw-CI-j1h" kind="push" identifier="profileSegue" id="edN-k1-zaa"/>
+                        <segue destination="uBE-vH-E53" kind="push" identifier="thankyouFromAgreementScreenSegue" id="M4i-sx-hvH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AEg-Ws-V8z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -834,14 +850,14 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraBorder" translatesAutoresizingMaskIntoConstraints="NO" id="yyd-MW-sQf">
-                                <rect key="frame" x="320" y="268.5" width="383" height="383"/>
+                                <rect key="frame" x="320.5" y="268.5" width="383" height="383"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="383" id="EeN-nN-6uF"/>
                                     <constraint firstAttribute="width" constant="383" id="M8u-VM-YVU"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bY9-Wh-BTx" userLabel="CameraView">
-                                <rect key="frame" x="343" y="291.5" width="337" height="337"/>
+                                <rect key="frame" x="343.5" y="291.5" width="337" height="337"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndn-vj-OKp">
@@ -857,20 +873,20 @@ of the circle for a photo</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="FjT-jy-dOV">
-                                <rect key="frame" x="463.5" y="417.5" width="97" height="84"/>
+                                <rect key="frame" x="463.5" y="418" width="97" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="97" id="rXg-vR-K36"/>
                                     <constraint firstAttribute="height" constant="84" id="vtw-e3-nxu"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUf-c0-Axk">
-                                <rect key="frame" x="344" y="291.5" width="337" height="337"/>
+                                <rect key="frame" x="344.5" y="291.5" width="337" height="337"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="300"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="37d-z5-oEa">
-                                <rect key="frame" x="344" y="291.5" width="337" height="337"/>
+                                <rect key="frame" x="344.5" y="291.5" width="337" height="337"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="337" id="UND-7B-3f6"/>
                                     <constraint firstAttribute="height" constant="337" id="hoY-Bj-x49"/>
@@ -887,14 +903,14 @@ of the circle for a photo</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visit-logo" translatesAutoresizingMaskIntoConstraints="NO" id="rJH-0R-hOH">
-                                <rect key="frame" x="379" y="40" width="267" height="76"/>
+                                <rect key="frame" x="378.5" y="40" width="267" height="76"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="267" id="0WE-o1-t6d"/>
                                     <constraint firstAttribute="height" constant="76" id="Vba-DJ-wo0"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jh5-RS-hOW">
-                                <rect key="frame" x="379" y="451" width="48" height="48"/>
+                                <rect key="frame" x="379.5" y="451" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="M2m-Ad-1df"/>
                                     <constraint firstAttribute="width" constant="48" id="T4m-n5-9mp"/>
@@ -905,7 +921,7 @@ of the circle for a photo</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbp-9L-QQh">
-                                <rect key="frame" x="596" y="451" width="48" height="48"/>
+                                <rect key="frame" x="596.5" y="451" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="5yf-0J-6dZ"/>
                                     <constraint firstAttribute="width" constant="48" id="lyC-dj-fcv"/>
@@ -969,7 +985,7 @@ of the circle for a photo</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lmq-g2-tYd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5767.1875" y="46.875"/>
+            <point key="canvasLocation" x="4937" y="1127"/>
         </scene>
         <!--Thankyou View Controller-->
         <scene sceneID="c1O-0P-NaI">
@@ -1003,14 +1019,14 @@ You have been successfully checked out.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThankYouPageLine" translatesAutoresizingMaskIntoConstraints="NO" id="Zr3-AB-Aff">
-                                <rect key="frame" x="276.5" y="485" width="200" height="1"/>
+                                <rect key="frame" x="261.5" y="531" width="200" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="PfG-NO-xWS"/>
                                     <constraint firstAttribute="width" constant="200" id="jNW-lV-xvl"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThankYouPageLine" translatesAutoresizingMaskIntoConstraints="NO" id="PhQ-9W-Fjs">
-                                <rect key="frame" x="543.5" y="488" width="200" height="1"/>
+                                <rect key="frame" x="558.5" y="534" width="200" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="gQJ-A9-73e"/>
                                     <constraint firstAttribute="width" constant="200" id="j0t-r0-KFu"/>
@@ -1027,7 +1043,7 @@ You have been successfully checked out.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Thankyou" translatesAutoresizingMaskIntoConstraints="NO" id="0Wa-hm-gp2">
-                                <rect key="frame" x="498" y="466" width="29" height="45"/>
+                                <rect key="frame" x="482.5" y="466" width="59" height="91"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visit-logo" translatesAutoresizingMaskIntoConstraints="NO" id="ogx-sV-iC7">
                                 <rect key="frame" x="379" y="40" width="267" height="76"/>
@@ -1065,7 +1081,7 @@ You have been successfully checked out.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aGC-ds-m3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-95.5078125" y="1047.65625"/>
+            <point key="canvasLocation" x="3404" y="1048"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="uKF-QW-opT">
@@ -1121,7 +1137,7 @@ You have been successfully checked out.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select your name to check in " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLj-r3-n9W">
-                                <rect key="frame" x="349" y="163" width="327" height="21"/>
+                                <rect key="frame" x="348.5" y="163" width="327" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="XCT-n0-qD4"/>
                                 </constraints>
@@ -1253,33 +1269,34 @@ You have been successfully checked out.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="Camera" width="100" height="80"/>
-        <image name="CameraBorder" width="383" height="383"/>
-        <image name="ThankYouPageLine" width="1" height="1"/>
-        <image name="Thankyou" width="29" height="45"/>
-        <image name="active_btn" width="276" height="65"/>
-        <image name="arrow_left" width="58" height="51"/>
-        <image name="arrow_left_disabled" width="58" height="51"/>
-        <image name="arrow_right" width="58" height="51"/>
-        <image name="arrow_right_disabled" width="58" height="51"/>
-        <image name="blue-corner" width="312" height="281"/>
-        <image name="checkin_btn" width="133" height="162"/>
-        <image name="checkout_btn" width="133" height="162"/>
+        <image name="Camera" width="200" height="160"/>
+        <image name="CameraBorder" width="766" height="766"/>
+        <image name="ThankYouPageLine" width="286" height="1"/>
+        <image name="Thankyou" width="59" height="91"/>
+        <image name="active_btn" width="553" height="130"/>
+        <image name="arrow_left" width="117" height="103"/>
+        <image name="arrow_left_disabled" width="117" height="103"/>
+        <image name="arrow_right" width="117" height="103"/>
+        <image name="arrow_right_disabled" width="117" height="103"/>
+        <image name="blue-corner" width="624" height="562"/>
+        <image name="checkin_btn" width="267" height="324"/>
+        <image name="checkout_btn" width="267" height="324"/>
         <image name="click-again" width="48" height="48"/>
         <image name="done-icon" width="48" height="48"/>
-        <image name="exclamation" width="129" height="85"/>
-        <image name="hbb" width="169" height="11"/>
+        <image name="exclamation" width="129.5" height="85.5"/>
+        <image name="hbb" width="338" height="23"/>
         <image name="horizontalLine" width="178" height="1"/>
         <image name="intermediatescreen" width="1024" height="768"/>
-        <image name="interview" width="165" height="139"/>
+        <image name="interview" width="330" height="278"/>
         <image name="ipad-bg" width="1024" height="768"/>
-        <image name="meeting" width="164" height="139"/>
-        <image name="personalvisit" width="164" height="139"/>
-        <image name="vendor" width="164" height="139"/>
+        <image name="meeting" width="329" height="278"/>
+        <image name="personalvisit" width="328" height="278"/>
+        <image name="vendor" width="329" height="278"/>
         <image name="visit-logo" width="176" height="111"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wQ5-Zu-j5E"/>
+        <segue reference="M4i-sx-hvH"/>
+        <segue reference="edN-k1-zaa"/>
         <segue reference="vVw-tP-oF9"/>
     </inferredMetricsTieBreakers>
 </document>

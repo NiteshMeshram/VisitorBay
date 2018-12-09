@@ -77,19 +77,18 @@ extension DeviceActivationDetails {
     func appFontColor(){
     //-> UIColor {
         let fontColor = self.appuiFontcolor!
+        
         let result = fontColor.components(separatedBy: ["(", ")", ","]).filter {!$0.isEmpty}
         
         UILabel.appearance().textColor = UIColor(red: CGFloat(Double(result[0])!/255.0),
                                                  green: CGFloat(Double(result[1])!/255.0),
                                                  blue: CGFloat(Double(result[2])!/255.0),
                                                  alpha: 1.0)
-        //UIColor.red
+        
+//        UILabel.appearance().textColor =  UIColor.black
         
         
-//        return UIColor(red: CGFloat(Double(result[0])!/255.0),
-//                       green: CGFloat(Double(result[1])!/255.0),
-//                       blue: CGFloat(Double(result[2])!/255.0),
-//                       alpha: 1.0)
+
     }
     
     func appBackgroundColor() -> UIColor {
@@ -103,6 +102,7 @@ extension DeviceActivationDetails {
                        green: CGFloat(Double(result[1])!/255.0),
                        blue: CGFloat(Double(result[2])!/255.0),
                        alpha: 1.0)
+//        return UIColor.white
     }
     
 }

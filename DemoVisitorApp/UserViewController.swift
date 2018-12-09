@@ -23,6 +23,8 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var dateTimeLabel: UILabel!
     
+    @IBOutlet weak var userInputTextField: CustomUITextField!
+    var nextElement = 0
     var dropDownTextField: CustomUITextField!
     var dropDown: UIPickerView!
     
@@ -49,7 +51,7 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
+//        self.populateUIElemente()
         
        self.UIElementesData()
         
@@ -83,6 +85,28 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
         
         self.dateTimeLabel.text =  format.string(from: now as Date)
     }
+    
+    func populateUIElemente() {
+        if let titel = formData!["response"]["form caption"].string {
+            self.headerTitle.text = titel
+        }
+        
+//        print(formData!["formdata"][nextElement])
+        
+        for (index, element) in formData!["formdata"].enumerated() {
+            
+            if nextElement == index {
+                print("Item \(index): \(element)")
+                break
+            }
+            
+        }
+    }
+    
+    func nextUIElement() {
+        
+    }
+    
     
 
     func UIElementesData(){
@@ -205,7 +229,67 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
             
         }
         
-        performSegue(withIdentifier: "agreementSegue", sender: nil)
+        if let activationDetails = DeviceActivationDetails.checkDataExistOrNot(){
+            
+            if activationDetails.isAgreement {
+                performSegue(withIdentifier: "agreementSegue", sender: nil)
+            }
+            else {
+                if activationDetails.isVisitorphoto {
+                    performSegue(withIdentifier: "profileFromUserScreenSegue", sender: nil)
+                }
+                else {
+//                    performSegue(withIdentifier: "thankyouFromUserScreenSegue", sender: nil)
+                    self.saveData()
+                }
+            }
+        }
+        
+        
+//        performSegue(withIdentifier: "agreementSegue", sender: nil)
+    }
+    
+    func saveData() {
+        
+        var loginDict = [String: Any]()
+        
+        var deviceID = ""
+        if let deviceInfo = UserDeviceDetails.checkDataExistOrNot() {
+            deviceID = deviceInfo.deviceUniqueId!
+            loginDict = ["a":"save-visitor" ,
+                         "deviceid":deviceInfo.deviceUniqueId!,
+                         "formdata": VisitorsDetailsManager.shared.finalUserData]
+            
+        }
+        
+        DataManager.postUserData(userDetailDict: loginDict, deviceID: deviceID, closure: {Result in
+            
+            switch Result {
+            case .success(let userData):
+                
+                print(userData)
+                
+                if userData["response"]["status"].stringValue == VisitorError.resposeCode105.rawValue {
+                    self.performSegue(withIdentifier: "thankyouFromUserScreenSegue", sender: userData)
+                }
+                
+                break
+            case .failure(let errorMessage):
+                
+                print(errorMessage)
+                
+                break
+            }
+        })
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "thankyouFromUserScreenSegue" {
+            let theDestination = (segue.destination as! ThankyouViewController)
+            let jsonData = sender as!  JSON
+            theDestination.thankYorResponse = jsonData
+        }
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
