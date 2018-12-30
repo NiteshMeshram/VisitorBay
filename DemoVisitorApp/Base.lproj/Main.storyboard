@@ -600,9 +600,11 @@
                                     <constraint firstAttribute="height" constant="125" id="PGX-Mx-cVK"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ey-3s-ptD" customClass="CustomUITextField" customModule="VisitorBay" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ey-3s-ptD" customClass="CustomUITextField" customModule="VisitorBay" customModuleProvider="target">
                                 <rect key="frame" x="326" y="334" width="373" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="373" id="n86-CY-JFi"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -615,18 +617,32 @@
                                     <action selector="loadNextUIElement:" destination="QzA-mD-ASj" eventType="touchUpInside" id="Heb-ym-tmU"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCt-pi-elu">
+                                <rect key="frame" x="326" y="282" width="372" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="08m-fy-huT"/>
+                                    <constraint firstAttribute="width" constant="372" id="3oK-FL-kTN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="C8C-LP-Nbo" firstAttribute="top" secondItem="ca7-cR-7w2" secondAttribute="top" constant="20" id="2Sy-X3-Kui"/>
+                            <constraint firstItem="4ey-3s-ptD" firstAttribute="top" secondItem="JCt-pi-elu" secondAttribute="bottom" constant="12" id="3uh-1X-W3t"/>
                             <constraint firstItem="ca7-cR-7w2" firstAttribute="bottom" secondItem="1ZF-ZP-U0X" secondAttribute="bottom" constant="11" id="6SQ-lF-iY4"/>
                             <constraint firstItem="QEH-1V-aCG" firstAttribute="top" secondItem="Xij-hl-fgR" secondAttribute="top" id="90S-qf-eu1"/>
                             <constraint firstItem="2wl-dP-KoM" firstAttribute="top" secondItem="gtj-dL-CWH" secondAttribute="top" id="A1G-ml-dEb"/>
                             <constraint firstItem="C8C-LP-Nbo" firstAttribute="leading" secondItem="ca7-cR-7w2" secondAttribute="leading" constant="379" id="EpN-eg-EAQ"/>
+                            <constraint firstItem="4ey-3s-ptD" firstAttribute="leading" secondItem="JCt-pi-elu" secondAttribute="leading" id="FIS-vp-8cW"/>
                             <constraint firstItem="1iM-AL-0aa" firstAttribute="trailing" secondItem="ca7-cR-7w2" secondAttribute="trailing" id="N2P-lk-HNO"/>
                             <constraint firstItem="QEH-1V-aCG" firstAttribute="trailing" secondItem="ca7-cR-7w2" secondAttribute="trailing" id="P2k-8o-kG6"/>
                             <constraint firstItem="9Oz-gu-u6A" firstAttribute="leading" secondItem="ca7-cR-7w2" secondAttribute="leading" constant="348" id="TCT-bL-DvK"/>
                             <constraint firstItem="2wl-dP-KoM" firstAttribute="leading" secondItem="ca7-cR-7w2" secondAttribute="leading" constant="18" id="bGu-7x-7Mr"/>
+                            <constraint firstItem="JCt-pi-elu" firstAttribute="leading" secondItem="ca7-cR-7w2" secondAttribute="leading" constant="326" id="c15-nT-Pr9"/>
+                            <constraint firstItem="JCt-pi-elu" firstAttribute="top" secondItem="9Oz-gu-u6A" secondAttribute="bottom" constant="49" id="dU4-Ve-18s"/>
                             <constraint firstItem="ca7-cR-7w2" firstAttribute="trailing" secondItem="1ZF-ZP-U0X" secondAttribute="trailing" constant="20" id="etJ-1H-acn"/>
                             <constraint firstItem="9Oz-gu-u6A" firstAttribute="top" secondItem="C8C-LP-Nbo" secondAttribute="bottom" constant="47" id="fvi-as-zWK"/>
                             <constraint firstItem="QEH-1V-aCG" firstAttribute="leading" secondItem="ca7-cR-7w2" secondAttribute="leading" id="gEY-cp-lGj"/>
@@ -639,6 +655,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="1kB-KO-vY1"/>
                     <connections>
+                        <outlet property="captionLabel" destination="JCt-pi-elu" id="8mO-Kr-o88"/>
                         <outlet property="companyLogo" destination="C8C-LP-Nbo" id="6d0-KF-e02"/>
                         <outlet property="dateTimeLabel" destination="1ZF-ZP-U0X" id="18k-qh-J9t"/>
                         <outlet property="headerTitle" destination="9Oz-gu-u6A" id="CwZ-PB-1bI"/>
@@ -653,7 +670,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tb-Pp-7bo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4155" y="47"/>
+            <point key="canvasLocation" x="4154.8828125" y="46.875"/>
         </scene>
         <!--Agreement View Controller-->
         <scene sceneID="7Xt-aH-njc">

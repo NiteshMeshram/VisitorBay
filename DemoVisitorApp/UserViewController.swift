@@ -26,6 +26,7 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     
+    @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var userInputTextField: CustomUITextField!
     var nextElement = 0
     var dataDictionary: Any!
@@ -119,6 +120,7 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
          },*/
         
         if let labelText = dataAtIndex["label"].string {
+            self.captionLabel.text = labelText
             self.userInputTextField.text = ""
             self.userInputTextField.isRequired = false
             self.userInputTextField.placeholder = labelText
