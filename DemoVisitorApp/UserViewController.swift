@@ -14,6 +14,8 @@ import Kingfisher
 
 class UserViewController: BaseviewController, UITextFieldDelegate {
     
+    @IBOutlet weak var logoWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var companyLogo: UIImageView!
     @IBOutlet weak var headerTitle: UILabel!
     @IBOutlet weak var personToMeetTextField: UITextField!
@@ -25,6 +27,7 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
     
     @IBOutlet weak var userInputTextField: CustomUITextField!
     var nextElement = 0
+    var dataDictionary: Any!
     var dropDownTextField: CustomUITextField!
     var dropDown: UIPickerView!
     
@@ -39,7 +42,7 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
     
     var formData: JSON?
 //    var formDataArray = []
-    var formDataArray = [String]()
+    var formDataArray = [Any]()
     
     
     var initialOrientation = true
@@ -51,9 +54,9 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-//        self.populateUIElemente()
+        self.populateUIElemente()
         
-       self.UIElementesData()
+//       self.UIElementesData()
         
         let date = Date()
         format = CheapDateFormatter.formatter()
@@ -62,6 +65,8 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
         
         if let activationDetails = DeviceActivationDetails.checkDataExistOrNot(){
             
+            self.setLogoImage()
+            /*
             if activationDetails.logoURL != "" {
                 let url = URL(string: activationDetails.logoURL!)
                 ImageCache.default.removeImage(forKey: "logoKey")
@@ -70,7 +75,7 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
             }else {
                 ImageCache.default.removeImage(forKey: "logoKey")
                 companyLogo.image = nil
-            }
+            }*/
             
             self.view.backgroundColor = activationDetails.appBackgroundColor()
         }
@@ -90,23 +95,129 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
         if let titel = formData!["response"]["form caption"].string {
             self.headerTitle.text = titel
         }
+        formDataArray = formData!["formdata"].array!
         
-//        print(formData!["formdata"][nextElement])
+        self.loadData()
         
-        for (index, element) in formData!["formdata"].enumerated() {
+        
+        
+    }
+    
+    func loadData(){
+        
+        dataDictionary = formDataArray[nextElement]
+        
+        let dataAtIndex:JSON = dataDictionary as! JSON
+        /*
+         {
+         "label" : "Full name",
+         "type" : "text",
+         "name" : "vname",
+         "id" : "1",
+         "req" : 1
+         },*/
+        
+        if let labelText = dataAtIndex["label"].string {
+            self.userInputTextField.text = ""
+            self.userInputTextField.placeholder = labelText
             
-            if nextElement == index {
-                print("Item \(index): \(element)")
-                break
+            if labelText == "Phone" {
+                self.userInputTextField.keyboardType = UIKeyboardType.phonePad
+            }
+            else {
+                self.userInputTextField.keyboardType = UIKeyboardType.default
             }
             
         }
-    }
-    
-    func nextUIElement() {
+        
+        
+        if dataAtIndex["req"].stringValue.toBool() {
+            self.userInputTextField.isRequired = dataAtIndex["req"].stringValue.toBool()
+        }
+        
+        if let keyName = dataAtIndex["name"].string {
+            self.userInputTextField.keyName = keyName
+        }
+        
+        
+        if let controltype = dataAtIndex["type"].string {
+            if controltype == "select" {
+                
+                for (key, listValue) in dataAtIndex["choice"] {
+                    self.list.append(listValue.string!)
+                }
+                
+                self.dropDown = UIPickerView()
+                self.dropDown.delegate = self
+                self.dropDown.dataSource = self
+                self.userInputTextField.inputView = self.dropDown
+//                self.arrayOfControls.append(self.userInputTextField)
+                
+            }
+            else {
+                
+            }
+        }
+        
         
     }
     
+    func setLogoImage() {
+        if let activationDetails = DeviceActivationDetails.checkDataExistOrNot(){
+            let url = URL(string: activationDetails.logoURL!)
+            companyLogo.kf.setImage(with: url,
+                                    placeholder: nil,
+                                    options: [.transition(ImageTransition.fade(1))],
+                                    progressBlock: { receivedSize, totalSize in
+                                        //                                        print("\(indexPath.row + 1): \(receivedSize)/\(totalSize)")
+            },
+                                    completionHandler: { image, error, cacheType, imageURL in
+                                        
+                                        //                                        print("\(indexPath.row + 1): Finished")
+                                        print(image?.size)
+                                        
+                                        self.logoHeightConstraint.constant = (image?.size.height)!
+                                        self.logoWidthConstraint.constant = (image?.size.width)!
+                                        //                                        self.companyLogo.image = image
+                                        //                                        cell.imageView?.image = self.resizeImage(image: image!, newWidth: 40.0)
+                                        
+            })
+        }
+        
+    }
+    
+    
+    
+    @IBAction func loadNextUIElement(_ sender: UIButton) {
+        
+        var errorString: String = ""
+        
+        if nextElement >= formDataArray.count - 1  {
+            print("IF-Block")
+        }
+        else {
+            print("ELSE-Block")
+            nextElement = nextElement + 1
+            print("nextElement ==> ",nextElement)
+            
+            
+            if self.userInputTextField.isRequired && (self.userInputTextField.text?.isEmpty)! {
+                errorString = errorString + self.userInputTextField.placeholder! + "\n"
+            }
+            
+            VisitorsDetailsManager.shared.finalUserData.updateValue(self.userInputTextField.text!, forKey: self.userInputTextField.keyName)
+            
+            if !(errorString.isEmpty) {
+                self.showValidationAlert(title: "Plese fill below data", message: errorString)
+            }
+            else {
+                self.loadData()
+            }
+            
+            
+            
+        }
+    }
     
 
     func UIElementesData(){
@@ -207,7 +318,14 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
     }
     
     @IBAction func nextButtonClick(_ sender: Any) {
+        /*nextElement = nextElement + 1
+        dataDictionary = formDataArray[nextElement]
         
+        let dataAtIndex:JSON = dataDictionary as! JSON
+        
+        print(dataAtIndex["type"])*/
+        
+        /*
 //        var userFormData = [String: Any]()
         
         var errorString: String = ""
@@ -240,6 +358,26 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
                 }
                 else {
 //                    performSegue(withIdentifier: "thankyouFromUserScreenSegue", sender: nil)
+                    self.saveData()
+                }
+            }
+        }
+        */
+        
+        
+        
+        
+        if let activationDetails = DeviceActivationDetails.checkDataExistOrNot(){
+            
+            if activationDetails.isAgreement {
+                performSegue(withIdentifier: "agreementSegue", sender: nil)
+            }
+            else {
+                if activationDetails.isVisitorphoto {
+                    performSegue(withIdentifier: "profileFromUserScreenSegue", sender: nil)
+                }
+                else {
+                    //                    performSegue(withIdentifier: "thankyouFromUserScreenSegue", sender: nil)
                     self.saveData()
                 }
             }
@@ -400,7 +538,7 @@ extension UserViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.dropDownTextField.text = list[row]
+        self.userInputTextField.text = list[row]
     }
 }
 

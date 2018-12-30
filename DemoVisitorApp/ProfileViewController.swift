@@ -20,6 +20,8 @@ class ProfileViewController: BaseviewController, UINavigationControllerDelegate 
     @IBOutlet weak var dateTimeLabel: UILabel!
     var format : DateFormatter!
     
+    @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var logoWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var doneProfileButton: UIButton!
     @IBOutlet weak var takeProfileButton: UIButton!
     let captureSession = AVCaptureSession()
@@ -64,7 +66,7 @@ class ProfileViewController: BaseviewController, UINavigationControllerDelegate 
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateClock), userInfo: nil, repeats: true)
         
         if let activationDetails = DeviceActivationDetails.checkDataExistOrNot(){
-            
+            /*
             if activationDetails.logoURL != "" {
                 let url = URL(string: activationDetails.logoURL!)
                 ImageCache.default.removeImage(forKey: "logoKey")
@@ -73,7 +75,10 @@ class ProfileViewController: BaseviewController, UINavigationControllerDelegate 
             }else {
                 ImageCache.default.removeImage(forKey: "logoKey")
                 companyLogo.image = nil
-            }
+            }*/
+            
+            self.setLogoImage()
+            
             self.view.backgroundColor = activationDetails.appBackgroundColor()
             
         }
@@ -83,6 +88,32 @@ class ProfileViewController: BaseviewController, UINavigationControllerDelegate 
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileViewController.setRotation), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
     }
+    
+    
+    func setLogoImage() {
+        if let activationDetails = DeviceActivationDetails.checkDataExistOrNot(){
+            let url = URL(string: activationDetails.logoURL!)
+            companyLogo.kf.setImage(with: url,
+                                    placeholder: nil,
+                                    options: [.transition(ImageTransition.fade(1))],
+                                    progressBlock: { receivedSize, totalSize in
+                                        //                                        print("\(indexPath.row + 1): \(receivedSize)/\(totalSize)")
+            },
+                                    completionHandler: { image, error, cacheType, imageURL in
+                                        
+                                        //                                        print("\(indexPath.row + 1): Finished")
+                                        print(image?.size)
+                                        
+                                        self.logoHeightConstraint.constant = (image?.size.height)!
+                                        self.logoWidthConstraint.constant = (image?.size.width)!
+                                        //                                        self.companyLogo.image = image
+                                        //                                        cell.imageView?.image = self.resizeImage(image: image!, newWidth: 40.0)
+                                        
+            })
+        }
+        
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "thankyouSegue" {

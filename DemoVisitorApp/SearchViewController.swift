@@ -15,6 +15,8 @@ private let collectionCellIdentifier = "myProfileViewIdentifier"
 
 class SearchViewController: BaseviewController {
     
+    @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var logoWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var companyLogo: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     

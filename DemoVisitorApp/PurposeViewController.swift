@@ -16,6 +16,8 @@ class PurposeViewController: BaseviewController {
     var initialOrientation = true
     var isInPortrait = false
     
+    @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var logoWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var companyLogo: UIImageView!
     var format : DateFormatter!
     
@@ -31,7 +33,8 @@ class PurposeViewController: BaseviewController {
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateClock), userInfo: nil, repeats: true)
         
         if let activationDetails = DeviceActivationDetails.checkDataExistOrNot(){
-            
+            self.setLogoImage()
+            /*
             if activationDetails.logoURL != "" {
                 let url = URL(string: activationDetails.logoURL!)
                 ImageCache.default.removeImage(forKey: "logoKey")
@@ -40,10 +43,34 @@ class PurposeViewController: BaseviewController {
             }else {
                 ImageCache.default.removeImage(forKey: "logoKey")
                 companyLogo.image = nil
-            }
+            }*/
             
             self.view.backgroundColor = activationDetails.appBackgroundColor()
         }
+    }
+    
+    func setLogoImage() {
+        if let activationDetails = DeviceActivationDetails.checkDataExistOrNot(){
+            let url = URL(string: activationDetails.logoURL!)
+            companyLogo.kf.setImage(with: url,
+                                    placeholder: nil,
+                                    options: [.transition(ImageTransition.fade(1))],
+                                    progressBlock: { receivedSize, totalSize in
+                                        //                                        print("\(indexPath.row + 1): \(receivedSize)/\(totalSize)")
+            },
+                                    completionHandler: { image, error, cacheType, imageURL in
+                                        
+                                        //                                        print("\(indexPath.row + 1): Finished")
+                                        print(image?.size)
+                                        
+                                        self.logoHeightConstraint.constant = (image?.size.height)!
+                                        self.logoWidthConstraint.constant = (image?.size.width)!
+                                        //                                        self.companyLogo.image = image
+                                        //                                        cell.imageView?.image = self.resizeImage(image: image!, newWidth: 40.0)
+                                        
+            })
+        }
+        
     }
     
     

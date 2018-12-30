@@ -55,8 +55,8 @@ class CompanyViewController: BaseviewController {
         
         if let activationDetails = DeviceActivationDetails.checkDataExistOrNot(){
             
-//            self.setLogoImage()
-            
+            self.setLogoImage()
+            /*
             if activationDetails.logoURL != "" {
                 let url = URL(string: activationDetails.logoURL!)
                 ImageCache.default.removeImage(forKey: "logoKey")
@@ -65,7 +65,7 @@ class CompanyViewController: BaseviewController {
             }else {
                 ImageCache.default.removeImage(forKey: "logoKey")
                 companyLogo.image = nil
-            }
+            }*/
             
 
             self.view.backgroundColor = activationDetails.appBackgroundColor()

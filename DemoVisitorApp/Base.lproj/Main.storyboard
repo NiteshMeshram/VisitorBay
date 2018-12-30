@@ -482,10 +482,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visit-logo" translatesAutoresizingMaskIntoConstraints="NO" id="MNX-jH-1L3">
-                                <rect key="frame" x="379" y="40" width="267" height="76"/>
+                                <rect key="frame" x="379" y="40" width="267" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="267" id="AR7-DN-fCL"/>
-                                    <constraint firstAttribute="height" constant="76" id="kqi-7j-uKX"/>
+                                    <constraint firstAttribute="height" constant="125" id="kqi-7j-uKX"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -522,6 +522,8 @@
                     <connections>
                         <outlet property="companyLogo" destination="MNX-jH-1L3" id="Bg2-pw-a15"/>
                         <outlet property="dateTimeLabel" destination="MuY-Ut-ang" id="FGn-3e-M3N"/>
+                        <outlet property="logoHeightConstraint" destination="kqi-7j-uKX" id="TNw-m5-kfc"/>
+                        <outlet property="logoWidthConstraint" destination="AR7-DN-fCL" id="ipa-bh-nWD"/>
                         <segue destination="QzA-mD-ASj" kind="push" identifier="userSegue" id="JRI-gi-6vD"/>
                     </connections>
                 </viewController>
@@ -592,23 +594,26 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visit-logo" translatesAutoresizingMaskIntoConstraints="NO" id="C8C-LP-Nbo">
-                                <rect key="frame" x="379" y="40" width="267" height="76"/>
+                                <rect key="frame" x="379" y="40" width="267" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="267" id="8UH-DR-sSC"/>
-                                    <constraint firstAttribute="height" constant="76" id="PGX-Mx-cVK"/>
+                                    <constraint firstAttribute="height" constant="125" id="PGX-Mx-cVK"/>
                                 </constraints>
                             </imageView>
-                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ey-3s-ptD" customClass="CustomUITextField" customModule="VisitorBay" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ey-3s-ptD" customClass="CustomUITextField" customModule="VisitorBay" customModuleProvider="target">
                                 <rect key="frame" x="326" y="334" width="373" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPR-xa-Doc">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPR-xa-Doc">
                                 <rect key="frame" x="409" y="450" width="207" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="loadNextUIElement:" destination="QzA-mD-ASj" eventType="touchUpInside" id="Heb-ym-tmU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -623,7 +628,7 @@
                             <constraint firstItem="9Oz-gu-u6A" firstAttribute="leading" secondItem="ca7-cR-7w2" secondAttribute="leading" constant="348" id="TCT-bL-DvK"/>
                             <constraint firstItem="2wl-dP-KoM" firstAttribute="leading" secondItem="ca7-cR-7w2" secondAttribute="leading" constant="18" id="bGu-7x-7Mr"/>
                             <constraint firstItem="ca7-cR-7w2" firstAttribute="trailing" secondItem="1ZF-ZP-U0X" secondAttribute="trailing" constant="20" id="etJ-1H-acn"/>
-                            <constraint firstItem="9Oz-gu-u6A" firstAttribute="top" secondItem="C8C-LP-Nbo" secondAttribute="bottom" constant="96" id="fvi-as-zWK"/>
+                            <constraint firstItem="9Oz-gu-u6A" firstAttribute="top" secondItem="C8C-LP-Nbo" secondAttribute="bottom" constant="47" id="fvi-as-zWK"/>
                             <constraint firstItem="QEH-1V-aCG" firstAttribute="leading" secondItem="ca7-cR-7w2" secondAttribute="leading" id="gEY-cp-lGj"/>
                             <constraint firstItem="ca7-cR-7w2" firstAttribute="trailing" secondItem="gtj-dL-CWH" secondAttribute="trailing" constant="18" id="gQL-oC-nwf"/>
                             <constraint firstItem="gtj-dL-CWH" firstAttribute="top" secondItem="ca7-cR-7w2" secondAttribute="top" constant="18" id="qGj-2o-H0s"/>
@@ -637,6 +642,8 @@
                         <outlet property="companyLogo" destination="C8C-LP-Nbo" id="6d0-KF-e02"/>
                         <outlet property="dateTimeLabel" destination="1ZF-ZP-U0X" id="18k-qh-J9t"/>
                         <outlet property="headerTitle" destination="9Oz-gu-u6A" id="CwZ-PB-1bI"/>
+                        <outlet property="logoHeightConstraint" destination="PGX-Mx-cVK" id="CdT-0c-ssz"/>
+                        <outlet property="logoWidthConstraint" destination="8UH-DR-sSC" id="h7k-pA-DKE"/>
                         <outlet property="userInputTextField" destination="4ey-3s-ptD" id="2M9-Bj-Wtw"/>
                         <segue destination="hDc-CQ-d7h" kind="push" identifier="agreementSegue" id="BeO-sL-buF"/>
                         <segue destination="CXw-CI-j1h" kind="push" identifier="profileFromUserScreenSegue" id="LdF-dd-Buy"/>
@@ -903,10 +910,10 @@ of the circle for a photo</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visit-logo" translatesAutoresizingMaskIntoConstraints="NO" id="rJH-0R-hOH">
-                                <rect key="frame" x="378.5" y="40" width="267" height="76"/>
+                                <rect key="frame" x="378.5" y="40" width="267" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="267" id="0WE-o1-t6d"/>
-                                    <constraint firstAttribute="height" constant="76" id="Vba-DJ-wo0"/>
+                                    <constraint firstAttribute="height" constant="125" id="Vba-DJ-wo0"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jh5-RS-hOW">
@@ -939,7 +946,7 @@ of the circle for a photo</string>
                             <constraint firstItem="G52-cl-UrH" firstAttribute="bottom" secondItem="jlf-Nh-hFK" secondAttribute="bottom" id="0Pj-mw-eLF"/>
                             <constraint firstItem="bY9-Wh-BTx" firstAttribute="top" secondItem="yyd-MW-sQf" secondAttribute="top" constant="23" id="0Qb-ZX-zmf"/>
                             <constraint firstItem="iId-vV-okd" firstAttribute="top" secondItem="jlf-Nh-hFK" secondAttribute="top" constant="18" id="1YW-JF-NYi"/>
-                            <constraint firstItem="Ndn-vj-OKp" firstAttribute="firstBaseline" secondItem="rJH-0R-hOH" secondAttribute="baseline" constant="74.5" id="3Ab-fu-OVQ"/>
+                            <constraint firstItem="Ndn-vj-OKp" firstAttribute="firstBaseline" secondItem="rJH-0R-hOH" secondAttribute="baseline" constant="25.5" id="3Ab-fu-OVQ"/>
                             <constraint firstItem="CUf-c0-Axk" firstAttribute="width" secondItem="37d-z5-oEa" secondAttribute="width" id="3E0-UW-6ZN"/>
                             <constraint firstItem="G52-cl-UrH" firstAttribute="leading" secondItem="jlf-Nh-hFK" secondAttribute="leading" id="3dx-Cd-22C"/>
                             <constraint firstItem="Tv8-o2-g8q" firstAttribute="trailing" secondItem="jlf-Nh-hFK" secondAttribute="trailing" id="5D3-jw-1rl"/>
@@ -979,6 +986,8 @@ of the circle for a photo</string>
                         <outlet property="countdown" destination="CUf-c0-Axk" id="hW7-SZ-LG0"/>
                         <outlet property="dateTimeLabel" destination="iCi-6p-SSS" id="FIG-A7-Twy"/>
                         <outlet property="doneProfileButton" destination="nbp-9L-QQh" id="opN-Cp-hKH"/>
+                        <outlet property="logoHeightConstraint" destination="Vba-DJ-wo0" id="zLL-53-xFI"/>
+                        <outlet property="logoWidthConstraint" destination="0WE-o1-t6d" id="jkA-1o-96X"/>
                         <outlet property="takeProfileButton" destination="jh5-RS-hOW" id="nWM-A1-m2h"/>
                         <segue destination="uBE-vH-E53" kind="push" identifier="thankyouSegue" id="wQ5-Zu-j5E"/>
                     </connections>
@@ -1046,9 +1055,9 @@ You have been successfully checked out.</string>
                                 <rect key="frame" x="482.5" y="466" width="59" height="91"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visit-logo" translatesAutoresizingMaskIntoConstraints="NO" id="ogx-sV-iC7">
-                                <rect key="frame" x="379" y="40" width="267" height="76"/>
+                                <rect key="frame" x="379" y="40" width="267" height="125"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="76" id="1JB-tb-kSR"/>
+                                    <constraint firstAttribute="height" constant="125" id="1JB-tb-kSR"/>
                                     <constraint firstAttribute="width" constant="267" id="YFy-wx-lIE"/>
                                 </constraints>
                             </imageView>
@@ -1059,7 +1068,7 @@ You have been successfully checked out.</string>
                             <constraint firstItem="0Wa-hm-gp2" firstAttribute="baseline" secondItem="Zr3-AB-Aff" secondAttribute="firstBaseline" constant="26" id="3jI-21-Hnx"/>
                             <constraint firstItem="FZL-Zh-gTV" firstAttribute="trailing" secondItem="YBm-ki-IS1" secondAttribute="trailing" constant="20" id="7qI-u6-UNd"/>
                             <constraint firstItem="ct1-mG-lND" firstAttribute="bottom" secondItem="FZL-Zh-gTV" secondAttribute="bottom" id="BeK-fu-EUh"/>
-                            <constraint firstItem="TUS-dQ-oBd" firstAttribute="top" secondItem="ogx-sV-iC7" secondAttribute="bottom" constant="160" id="Cno-9S-SYN"/>
+                            <constraint firstItem="TUS-dQ-oBd" firstAttribute="top" secondItem="ogx-sV-iC7" secondAttribute="bottom" constant="111" id="Cno-9S-SYN"/>
                             <constraint firstItem="0Wa-hm-gp2" firstAttribute="top" secondItem="TUS-dQ-oBd" secondAttribute="bottom" constant="40" id="IFQ-60-q2S"/>
                             <constraint firstItem="ct1-mG-lND" firstAttribute="trailing" secondItem="FZL-Zh-gTV" secondAttribute="trailing" id="MBY-DG-5Cq"/>
                             <constraint firstItem="PhQ-9W-Fjs" firstAttribute="leading" secondItem="0Wa-hm-gp2" secondAttribute="trailing" constant="17" id="gKJ-hr-AoJ"/>
@@ -1076,6 +1085,8 @@ You have been successfully checked out.</string>
                     <connections>
                         <outlet property="companyLogo" destination="ogx-sV-iC7" id="6jG-eG-J4P"/>
                         <outlet property="dateTimeLabel" destination="YBm-ki-IS1" id="j7k-g0-eTK"/>
+                        <outlet property="logoHeightConstraint" destination="1JB-tb-kSR" id="1Cg-XG-YwY"/>
+                        <outlet property="logoWidthConstraint" destination="YFy-wx-lIE" id="biU-c5-lV8"/>
                         <outlet property="messageLabel" destination="TUS-dQ-oBd" id="5oZ-Nn-YRY"/>
                     </connections>
                 </viewController>
@@ -1137,7 +1148,7 @@ You have been successfully checked out.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select your name to check in " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLj-r3-n9W">
-                                <rect key="frame" x="348.5" y="163" width="327" height="21"/>
+                                <rect key="frame" x="348.5" y="165" width="327" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="XCT-n0-qD4"/>
                                 </constraints>
@@ -1146,9 +1157,9 @@ You have been successfully checked out.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visit-logo" translatesAutoresizingMaskIntoConstraints="NO" id="KOk-Ng-v9o">
-                                <rect key="frame" x="379" y="40" width="267" height="67"/>
+                                <rect key="frame" x="379" y="40" width="267" height="125"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="67" id="4sU-r1-2hG"/>
+                                    <constraint firstAttribute="height" constant="125" id="4sU-r1-2hG"/>
                                     <constraint firstAttribute="width" constant="267" id="NTV-Rh-Tpd"/>
                                 </constraints>
                             </imageView>
@@ -1201,8 +1212,8 @@ You have been successfully checked out.</string>
                             <constraint firstItem="CFK-8O-vUz" firstAttribute="leading" secondItem="i8P-CR-I6O" secondAttribute="leading" constant="237" id="8L4-z2-s1H"/>
                             <constraint firstItem="i8P-CR-I6O" firstAttribute="trailing" secondItem="Has-1e-etl" secondAttribute="trailing" constant="18" id="90B-ZD-F9N"/>
                             <constraint firstItem="KOk-Ng-v9o" firstAttribute="top" secondItem="i8P-CR-I6O" secondAttribute="top" constant="20" id="9Ca-hJ-xRo"/>
-                            <constraint firstItem="xLj-r3-n9W" firstAttribute="top" secondItem="KOk-Ng-v9o" secondAttribute="bottom" constant="56" id="CN6-UG-UUF"/>
-                            <constraint firstItem="CFK-8O-vUz" firstAttribute="top" secondItem="xLj-r3-n9W" secondAttribute="bottom" constant="34" id="IED-gL-hHW"/>
+                            <constraint firstItem="xLj-r3-n9W" firstAttribute="top" secondItem="KOk-Ng-v9o" secondAttribute="bottom" id="CN6-UG-UUF"/>
+                            <constraint firstItem="CFK-8O-vUz" firstAttribute="top" secondItem="xLj-r3-n9W" secondAttribute="bottom" constant="32" id="IED-gL-hHW"/>
                             <constraint firstItem="xLj-r3-n9W" firstAttribute="centerX" secondItem="CFK-8O-vUz" secondAttribute="centerX" id="USF-ZE-ulh"/>
                             <constraint firstItem="i8P-CR-I6O" firstAttribute="trailing" secondItem="LA9-NT-R3n" secondAttribute="trailing" constant="20" id="Uhe-LQ-7f3"/>
                             <constraint firstItem="kn2-qL-CZU" firstAttribute="bottom" secondItem="i8P-CR-I6O" secondAttribute="bottom" id="ZLo-74-b67"/>
@@ -1222,6 +1233,8 @@ You have been successfully checked out.</string>
                         <outlet property="collectionView" destination="grs-ed-rUY" id="TEf-Qx-duf"/>
                         <outlet property="companyLogo" destination="KOk-Ng-v9o" id="8ER-I3-HLw"/>
                         <outlet property="dateTimeLabel" destination="LA9-NT-R3n" id="EWe-Ok-ayp"/>
+                        <outlet property="logoHeightConstraint" destination="4sU-r1-2hG" id="rON-bk-vog"/>
+                        <outlet property="logoWidthConstraint" destination="NTV-Rh-Tpd" id="Tad-Qb-CYx"/>
                         <outlet property="searchUser" destination="CFK-8O-vUz" id="ne7-33-8xQ"/>
                         <segue destination="uBE-vH-E53" kind="push" identifier="thankYouSegue" id="L6t-Bb-8I7"/>
                     </connections>
@@ -1295,8 +1308,8 @@ You have been successfully checked out.</string>
         <image name="visit-logo" width="176" height="111"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="M4i-sx-hvH"/>
-        <segue reference="edN-k1-zaa"/>
-        <segue reference="vVw-tP-oF9"/>
+        <segue reference="OiF-IJ-FZ5"/>
+        <segue reference="LdF-dd-Buy"/>
+        <segue reference="X8p-Bh-PNw"/>
     </inferredMetricsTieBreakers>
 </document>

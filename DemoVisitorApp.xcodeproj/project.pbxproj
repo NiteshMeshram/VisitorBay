@@ -44,6 +44,8 @@
 		38247217215691EE000622CF /* YPDrawSignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38247216215691EE000622CF /* YPDrawSignatureView.swift */; };
 		382992D2211A0A4F00B1D164 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382992D1211A0A4F00B1D164 /* ErrorViewController.swift */; };
 		384F8A0621404D82007D8245 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384F8A0521404D82007D8245 /* LoadingScreen.swift */; };
+		3858498821D71066001B2920 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3858498721D71066001B2920 /* LogoView.swift */; };
+		3858498A21D71102001B2920 /* LogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3858498921D71102001B2920 /* LogoView.xib */; };
 		386B8DDA210821770085392F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8DD5210821770085392F /* DataManager.swift */; };
 		386B8DDB210821770085392F /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8DD6210821770085392F /* ServerManager.swift */; };
 		386B8DDC210821770085392F /* SharedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B8DD8210821770085392F /* SharedManager.swift */; };
@@ -125,6 +127,8 @@
 		38247216215691EE000622CF /* YPDrawSignatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YPDrawSignatureView.swift; sourceTree = "<group>"; };
 		382992D1211A0A4F00B1D164 /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		384F8A0521404D82007D8245 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
+		3858498721D71066001B2920 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		3858498921D71102001B2920 /* LogoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoView.xib; sourceTree = "<group>"; };
 		386B8DD5210821770085392F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		386B8DD6210821770085392F /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
 		386B8DD8210821770085392F /* SharedManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedManager.swift; sourceTree = "<group>"; };
@@ -290,6 +294,8 @@
 				382992D1211A0A4F00B1D164 /* ErrorViewController.swift */,
 				384F8A0521404D82007D8245 /* LoadingScreen.swift */,
 				38A8C7E6218A186100376C6E /* VisitorsCommon.swift */,
+				3858498721D71066001B2920 /* LogoView.swift */,
+				3858498921D71102001B2920 /* LogoView.xib */,
 			);
 			path = DemoVisitorApp;
 			sourceTree = "<group>";
@@ -471,6 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38C00C6E21854A6E008FBC3E /* default1.jpeg in Resources */,
+				3858498A21D71102001B2920 /* LogoView.xib in Resources */,
 				0027D17F20F4F1B5000A618D /* IQKeyboardManager.bundle in Resources */,
 				00CE48D1204D23E1008FC9DA /* LaunchScreen.storyboard in Resources */,
 				222F6AAF20D6DDD6004EFA91 /* Montserrat in Resources */,
@@ -560,6 +567,7 @@
 				386B8DDC210821770085392F /* SharedManager.swift in Sources */,
 				00CE48CC204D23E1008FC9DA /* DemoVisitorApp.xcdatamodeld in Sources */,
 				0027D17A20F4F1B5000A618D /* IQBarButtonItem.swift in Sources */,
+				3858498821D71066001B2920 /* LogoView.swift in Sources */,
 				386B8DDF2110D51E0085392F /* SplashScreenViewController.swift in Sources */,
 				0027D17320F4F1B5000A618D /* IQUIViewController+Additions.swift in Sources */,
 				38A8C7F6218F6C3D00376C6E /* DeviceActivationDetails+CoreDataClass.swift in Sources */,

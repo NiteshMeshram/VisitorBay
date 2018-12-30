@@ -13,6 +13,8 @@ import Kingfisher
 
 class ThankyouViewController: BaseviewController {
     
+    @IBOutlet weak var logoWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var companyLogo: UIImageView!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var dateTimeLabel: UILabel!
@@ -50,7 +52,7 @@ class ThankyouViewController: BaseviewController {
         }
         
         if let activationDetails = DeviceActivationDetails.checkDataExistOrNot(){
-            
+            /*
             if activationDetails.logoURL != "" {
                 let url = URL(string: activationDetails.logoURL!)
                 ImageCache.default.removeImage(forKey: "logoKey")
@@ -60,6 +62,10 @@ class ThankyouViewController: BaseviewController {
                 ImageCache.default.removeImage(forKey: "logoKey")
                 companyLogo.image = nil
             }
+            */
+            
+            self.setLogoImage()
+            
             self.view.backgroundColor = activationDetails.appBackgroundColor()
             
         }
@@ -91,6 +97,30 @@ class ThankyouViewController: BaseviewController {
         self.dateTimeLabel.text = format.string(from: date)
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateClock), userInfo: nil, repeats: true)
         
+        
+    }
+    
+    func setLogoImage() {
+        if let activationDetails = DeviceActivationDetails.checkDataExistOrNot(){
+            let url = URL(string: activationDetails.logoURL!)
+            companyLogo.kf.setImage(with: url,
+                                    placeholder: nil,
+                                    options: [.transition(ImageTransition.fade(1))],
+                                    progressBlock: { receivedSize, totalSize in
+                                        //                                        print("\(indexPath.row + 1): \(receivedSize)/\(totalSize)")
+            },
+                                    completionHandler: { image, error, cacheType, imageURL in
+                                        
+                                        //                                        print("\(indexPath.row + 1): Finished")
+                                        print(image?.size)
+                                        
+                                        self.logoHeightConstraint.constant = (image?.size.height)!
+                                        self.logoWidthConstraint.constant = (image?.size.width)!
+                                        //                                        self.companyLogo.image = image
+                                        //                                        cell.imageView?.image = self.resizeImage(image: image!, newWidth: 40.0)
+                                        
+            })
+        }
         
     }
     
