@@ -644,6 +644,7 @@
                         <outlet property="headerTitle" destination="9Oz-gu-u6A" id="CwZ-PB-1bI"/>
                         <outlet property="logoHeightConstraint" destination="PGX-Mx-cVK" id="CdT-0c-ssz"/>
                         <outlet property="logoWidthConstraint" destination="8UH-DR-sSC" id="h7k-pA-DKE"/>
+                        <outlet property="nextButton" destination="bPR-xa-Doc" id="akN-eN-s0x"/>
                         <outlet property="userInputTextField" destination="4ey-3s-ptD" id="2M9-Bj-Wtw"/>
                         <segue destination="hDc-CQ-d7h" kind="push" identifier="agreementSegue" id="BeO-sL-buF"/>
                         <segue destination="CXw-CI-j1h" kind="push" identifier="profileFromUserScreenSegue" id="LdF-dd-Buy"/>

@@ -24,6 +24,7 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var dateTimeLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
     
     @IBOutlet weak var userInputTextField: CustomUITextField!
     var nextElement = 0
@@ -119,6 +120,7 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
         
         if let labelText = dataAtIndex["label"].string {
             self.userInputTextField.text = ""
+            self.userInputTextField.isRequired = false
             self.userInputTextField.placeholder = labelText
             
             if labelText == "Phone" {
@@ -194,6 +196,7 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
         
         if nextElement >= formDataArray.count - 1  {
             print("IF-Block")
+            self.nextButtonClick(nextButton)
         }
         else {
             print("ELSE-Block")

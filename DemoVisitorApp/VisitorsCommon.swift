@@ -305,7 +305,7 @@ extension UserDeviceDetails {
                             
                             if let agreement = jsonString["agreement"].dictionary {
 //                                print(agreement)
-                                if let isagreement = agreement["isagreement"]?.stringValue.lowercased().toBool() {
+                                if let isagreement = agreement["isagreement"]?.stringValue.toBool() {
                                     userDevice.activationsDetails?.isAgreement = isagreement
 //                                    userDevice.activationsDetails?.isAgreement = false
                                 }
@@ -313,7 +313,7 @@ extension UserDeviceDetails {
                             
                             if let visitorphoto = jsonString["visitorphoto"].dictionary {
 //                                print(visitorphoto)
-                                if let isvisitorphoto = visitorphoto["isvisitorphoto"]?.stringValue.lowercased().toBool() {
+                                if let isvisitorphoto = visitorphoto["isvisitorphoto"]?.stringValue.toBool() {
                                     userDevice.activationsDetails?.isVisitorphoto = isvisitorphoto
 //                                    userDevice.activationsDetails?.isVisitorphoto = false
                                 }
@@ -433,6 +433,10 @@ extension String {
     func toBool() -> Bool{
         if self == "false" {
             return false
+        } else if self == "0" {
+            return false
+        } else if self == "1" {
+            return true
         }else{
             return true
         }
