@@ -617,7 +617,7 @@
                                     <action selector="loadNextUIElement:" destination="QzA-mD-ASj" eventType="touchUpInside" id="Heb-ym-tmU"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCt-pi-elu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCt-pi-elu">
                                 <rect key="frame" x="326" y="282" width="372" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="08m-fy-huT"/>
