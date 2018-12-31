@@ -22,7 +22,6 @@ class HomeViewController: BaseviewController,UITextFieldDelegate {
     
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var topLine1Label: UILabel!
-    //    @IBOutlet weak var topLine1Label: UILabel!
     @IBOutlet weak var topLine2Label: UILabel!
     @IBOutlet weak var activationCodeText: UITextField!
     
@@ -59,7 +58,6 @@ class HomeViewController: BaseviewController,UITextFieldDelegate {
     //Update clock every second
     @objc func updateClock() {
         let now = NSDate()
-        
         self.dateTimeLabel.text =  format.string(from: now as Date)
     }
     
