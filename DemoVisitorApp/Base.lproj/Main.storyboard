@@ -609,10 +609,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPR-xa-Doc">
-                                <rect key="frame" x="409" y="450" width="207" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPR-xa-Doc">
+                                <rect key="frame" x="409" y="450" width="176" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Next"/>
+                                <state key="normal" image="next"/>
                                 <connections>
                                     <action selector="loadNextUIElement:" destination="QzA-mD-ASj" eventType="touchUpInside" id="Heb-ym-tmU"/>
                                 </connections>
@@ -1321,12 +1321,13 @@ You have been successfully checked out.</string>
         <image name="interview" width="330" height="278"/>
         <image name="ipad-bg" width="1024" height="768"/>
         <image name="meeting" width="329" height="278"/>
+        <image name="next" width="176" height="65"/>
         <image name="personalvisit" width="328" height="278"/>
         <image name="vendor" width="329" height="278"/>
         <image name="visit-logo" width="176" height="111"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="L6t-Bb-8I7"/>
+        <segue reference="OiF-IJ-FZ5"/>
         <segue reference="LdF-dd-Buy"/>
         <segue reference="X8p-Bh-PNw"/>
     </inferredMetricsTieBreakers>

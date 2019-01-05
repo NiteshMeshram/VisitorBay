@@ -58,6 +58,24 @@ class DataManager {
     func initialize() {
         DataManager.userDeviceId = (UIDevice.current.identifierForVendor?.uuidString)!
     }
+    
+
+    
+    class func mettingTypeAPI(meetingTypeDict: [String:Any], closure: @escaping(Result<JSON,String>) ->Void){
+        ServerManager.sharedInstance().getRequest(queryStringData: meetingTypeDict, apiName: .UserActivation, extraHeader: nil) { Result in
+            
+            switch Result {
+            case .success(let jsonResponse):
+                print(jsonResponse)
+                //                var userActivation = DeviceActivationDetails.convertJsonToObject(jsonString: jsonResponse, userDeviceId: userDetailDict["deviceid"] as! String)!
+                closure(.success(jsonResponse))
+                break
+            case .failure(let errorMessage):
+                closure(.failure(errorMessage))
+            }
+        }
+    }
+    
     //MARK: - Registration
     class func userActivation(userDetailDict: [String:Any], closure: @escaping(Result<UserDeviceDetails,String>) ->Void){
         

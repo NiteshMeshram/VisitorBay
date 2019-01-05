@@ -130,6 +130,27 @@ class CompanyViewController: BaseviewController {
     @IBAction func checkInButtonClicked(_ sender: Any) {
         comingFrom = "checkIn"
         performSegue(withIdentifier: "purposeSegue", sender: nil)
+        
+        var loginDict = [String: Any]()
+        if let deviceInfo = UserDeviceDetails.checkDataExistOrNot() {
+            loginDict = ["a":"meeting-type" ,
+                         "deviceid":deviceInfo.deviceUniqueId!]
+        }
+        
+        DataManager.mettingTypeAPI(meetingTypeDict: loginDict, closure: {Result in
+            
+            switch Result {
+            case .success(let jsonData):
+                print(jsonData)
+                
+                break
+            case .failure(let errorMessage):
+                print(errorMessage)
+                break
+                
+            }
+        })
+        
     }
     @IBAction func checkOutButtonClicked(_ sender: Any) {
         comingFrom = "checkOut"
