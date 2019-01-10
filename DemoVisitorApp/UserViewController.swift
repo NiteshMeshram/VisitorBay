@@ -141,7 +141,20 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
         
         if let keyName = dataAtIndex["name"].string {
             self.userInputTextField.keyName = keyName
+            
+            if let val = VisitorsDetailsManager.shared.finalUserData[keyName] {
+//                print(val)
+                self.userInputTextField.text = val as! String
+                
+            }
+            
         }
+        
+       // VisitorsDetailsManager.shared.finalUserData.updateValue(self.userInputTextField.text!, forKey: self.userInputTextField.keyName)
+        
+//        if VisitorsDetailsManager.shared.finalUserData
+        
+        
         
         
         if let controltype = dataAtIndex["type"].string {
@@ -155,6 +168,10 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
                 self.dropDown.delegate = self
                 self.dropDown.dataSource = self
                 self.userInputTextField.inputView = self.dropDown
+                self.userInputTextField.isRequired = false
+                if dataAtIndex["req"].stringValue.toBool() {
+                    self.userInputTextField.isRequired = dataAtIndex["req"].stringValue.toBool()
+                }
 //                self.arrayOfControls.append(self.userInputTextField)
                 
             }
@@ -191,6 +208,21 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
     }
     
     
+    @IBAction func loadPreviousUIElement(_ sender: Any) {
+        
+        if nextElement > 0  {
+            print("IF-Block")
+            nextElement = nextElement - 1
+            print("PreviousUIElement ==> ",nextElement)
+            self.loadData()
+            
+        }
+        else {
+            print("ELSE-Block")
+//            nextElement = nextElement - 1
+            print("PreviousUIElement ==> ",nextElement)
+        }
+    }
     
     @IBAction func loadNextUIElement(_ sender: UIButton) {
         
@@ -198,11 +230,20 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
         
         if nextElement >= formDataArray.count - 1  {
             print("IF-Block")
-            self.nextButtonClick(nextButton)
+            if self.userInputTextField.isRequired && (self.userInputTextField.text?.isEmpty)! {
+                errorString = errorString + self.userInputTextField.placeholder! + "\n"
+            }
+            if !(errorString.isEmpty) {
+                self.showValidationAlert(title: "Plese fill below data", message: errorString)
+            }
+            else {
+                self.nextButtonClick(nextButton)
+            }
+            
         }
         else {
             print("ELSE-Block")
-            nextElement = nextElement + 1
+            
             print("nextElement ==> ",nextElement)
             
             
@@ -216,6 +257,7 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
                 self.showValidationAlert(title: "Plese fill below data", message: errorString)
             }
             else {
+                nextElement = nextElement + 1
                 self.loadData()
             }
             

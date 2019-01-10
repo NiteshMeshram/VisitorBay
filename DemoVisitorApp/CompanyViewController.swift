@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Kingfisher
+import SwiftyJSON
 
 class CompanyViewController: BaseviewController {
     
@@ -129,7 +130,7 @@ class CompanyViewController: BaseviewController {
     }
     @IBAction func checkInButtonClicked(_ sender: Any) {
         comingFrom = "checkIn"
-        performSegue(withIdentifier: "purposeSegue", sender: nil)
+//        performSegue(withIdentifier: "purposeSegue", sender: nil)
         
         var loginDict = [String: Any]()
         if let deviceInfo = UserDeviceDetails.checkDataExistOrNot() {
@@ -142,6 +143,10 @@ class CompanyViewController: BaseviewController {
             switch Result {
             case .success(let jsonData):
                 print(jsonData)
+                
+//                if jsonData["response"]["status"].stringValue == VisitorError.resposeCode105.rawValue {
+                    self.performSegue(withIdentifier: "purposeSegue", sender: jsonData)
+//                }
                 
                 break
             case .failure(let errorMessage):
@@ -160,7 +165,9 @@ class CompanyViewController: BaseviewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "purposeSegue"{
-            
+            let userController = segue.destination as! PurposeViewController
+            let jsonData = sender as!  JSON
+            userController.purposeTypeJSON = jsonData
         }
         if segue.identifier == "userSearchSegue"{
             let theDestination = (segue.destination as! SearchViewController)

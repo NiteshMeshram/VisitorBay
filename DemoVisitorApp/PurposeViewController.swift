@@ -11,7 +11,13 @@ import SwiftyJSON
 import UIKit
 import Kingfisher
 
+private let collectionCellIdentifier = "myPurposeViewIdentifier"
+
+
 class PurposeViewController: BaseviewController {
+    
+    var purposeTypeJSON: JSON?
+    var dataListArray = [Any]()
     
     var initialOrientation = true
     var isInPortrait = false
@@ -21,9 +27,18 @@ class PurposeViewController: BaseviewController {
     @IBOutlet weak var companyLogo: UIImageView!
     var format : DateFormatter!
     
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var dateTimeLabel: UILabel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.collectionView.isUserInteractionEnabled = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        dataListArray = purposeTypeJSON!["meetingType"].array!
         
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -34,18 +49,19 @@ class PurposeViewController: BaseviewController {
         
         if let activationDetails = DeviceActivationDetails.checkDataExistOrNot(){
             self.setLogoImage()
-            /*
-            if activationDetails.logoURL != "" {
-                let url = URL(string: activationDetails.logoURL!)
-                ImageCache.default.removeImage(forKey: "logoKey")
-                let resource = ImageResource(downloadURL: url!, cacheKey: "logoKey")
-                companyLogo.kf.setImage(with: resource)
-            }else {
-                ImageCache.default.removeImage(forKey: "logoKey")
-                companyLogo.image = nil
-            }*/
             
             self.view.backgroundColor = activationDetails.appBackgroundColor()
+        }
+        
+        let nibName = UINib(nibName: "MeetingTypeCollectionViewCell", bundle: nil)
+        self.collectionView.register(nibName, forCellWithReuseIdentifier: collectionCellIdentifier)
+        
+        if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout{
+            layout.minimumLineSpacing = 10
+            layout.minimumInteritemSpacing = 10
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+            let size = CGSize(width:(collectionView!.bounds.width-30)/2, height: 90)
+            layout.itemSize = size
         }
     }
     
@@ -98,7 +114,6 @@ class PurposeViewController: BaseviewController {
     
     
     @IBAction func selectedPurpose(_ sender: UIButton) {
-//        print(sender.tag)
         
         if sender.tag == 0 {
             VisitorsDetailsManager.shared.finalUserData.updateValue("Meeting", forKey: "purpose")
@@ -150,7 +165,88 @@ class PurposeViewController: BaseviewController {
     
     override func viewWillLayoutSubviews() {
         super.viewDidLayoutSubviews()
+    }
+    
+}
+
+extension PurposeViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //        performSegue(withIdentifier: "thankYouSegue", sender: nil)
+        self.collectionView.isUserInteractionEnabled = false
         
+        let typeData = self.dataListArray[indexPath.row] as! JSON
+//        cell.purposeTypeLabel.text = typeData["type"].string
+        
+        VisitorsDetailsManager.shared.finalUserData.updateValue(typeData["type"].string!, forKey: "purpose")
+        
+        
+        var loginDict = [String: Any]()
+        //        http://dev.visitorbay.com/api/?a=render-form&deviceid=<deviceid>
+        if let deviceInfo = UserDeviceDetails.checkDataExistOrNot() {
+            loginDict = ["a":"render-form" ,
+                         "deviceid":deviceInfo.deviceUniqueId!]
+        }
+        
+        DataManager.userFormAPI(userDetailDict: loginDict, closure: {Result in
+            
+            switch Result {
+            case .success(let jsonData):
+                if jsonData["response"]["status"].stringValue == VisitorError.resposeCode105.rawValue {
+                    self.performSegue(withIdentifier: "userSegue", sender: jsonData)
+                }
+                
+                break
+            case .failure(let errorMessage):
+                print(errorMessage)
+                break
+                
+            }
+        })
+        
+        }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        /*
+        if dataSource != nil {
+            return (dataSource?.count)!
+        }*/
+        return dataListArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier, for: indexPath) as! MeetingTypeCollectionViewCell
+        
+        var bcolor : UIColor = UIColor( red: 0.2, green: 0.2, blue:0.2, alpha: 0.3 )
+        
+        cell.layer.borderColor = bcolor.cgColor
+        cell.layer.borderWidth = 0.5
+        cell.layer.cornerRadius = 3
+        
+        let typeData = self.dataListArray[indexPath.row] as! JSON
+        cell.purposeTypeLabel.text = typeData["type"].string
+        
+        
+//        print(typeData)
+        
+//        cell.labelOne.text = typeData!["type"]!.stringValue
+        
+        /*
+        let profileDict = self.dataSource![indexPath.row].dictionary
+        cell.labelOne.text = profileDict!["name"]!.stringValue
+        cell.labelTwo.text = profileDict!["phone"]!.stringValue
+        let imageUrlString = profileDict!["userpic"]!.stringValue
+        cell.profilePic.image = UIImage(url: URL(string: imageUrlString))
+        cell.profilePic.contentMode = .scaleAspectFill
+        cell.profilePic.translatesAutoresizingMaskIntoConstraints = false
+        */
+        
+        
+        
+        return cell
         
     }
     

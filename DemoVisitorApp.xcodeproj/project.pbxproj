@@ -62,6 +62,8 @@
 		38C00C6E21854A6E008FBC3E /* default1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 38C00C6D21854A6E008FBC3E /* default1.jpeg */; };
 		38C00C7021854B95008FBC3E /* MaskedImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C00C6F21854B95008FBC3E /* MaskedImageComponent.swift */; };
 		38CE9290216EDCB0007F1053 /* VisitorsDetailsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE928F216EDCB0007F1053 /* VisitorsDetailsManager.swift */; };
+		38F534B821E2E42300F92AD7 /* MeetingTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F534B621E2E42300F92AD7 /* MeetingTypeCollectionViewCell.swift */; };
+		38F534B921E2E42300F92AD7 /* MeetingTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38F534B721E2E42300F92AD7 /* MeetingTypeCollectionViewCell.xib */; };
 		ED1F8A630A28927BCEDBD749 /* Pods_DemoVisitorApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED11E36A2257DE4D3F9D6AD2 /* Pods_DemoVisitorApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +147,8 @@
 		38C00C6D21854A6E008FBC3E /* default1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default1.jpeg; sourceTree = "<group>"; };
 		38C00C6F21854B95008FBC3E /* MaskedImageComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskedImageComponent.swift; sourceTree = "<group>"; };
 		38CE928F216EDCB0007F1053 /* VisitorsDetailsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorsDetailsManager.swift; sourceTree = "<group>"; };
+		38F534B621E2E42300F92AD7 /* MeetingTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		38F534B721E2E42300F92AD7 /* MeetingTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeetingTypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		783AABDC4CA4051A8F81A68B /* Pods-DemoVisitorApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoVisitorApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoVisitorApp/Pods-DemoVisitorApp.release.xcconfig"; sourceTree = "<group>"; };
 		94F213BA3894D84CDDE46998 /* Pods-DemoVisitorApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoVisitorApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemoVisitorApp/Pods-DemoVisitorApp.debug.xcconfig"; sourceTree = "<group>"; };
 		ED11E36A2257DE4D3F9D6AD2 /* Pods_DemoVisitorApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoVisitorApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -296,6 +300,8 @@
 				38A8C7E6218A186100376C6E /* VisitorsCommon.swift */,
 				3858498721D71066001B2920 /* LogoView.swift */,
 				3858498921D71102001B2920 /* LogoView.xib */,
+				38F534B621E2E42300F92AD7 /* MeetingTypeCollectionViewCell.swift */,
+				38F534B721E2E42300F92AD7 /* MeetingTypeCollectionViewCell.xib */,
 			);
 			path = DemoVisitorApp;
 			sourceTree = "<group>";
@@ -480,6 +486,7 @@
 				3858498A21D71102001B2920 /* LogoView.xib in Resources */,
 				0027D17F20F4F1B5000A618D /* IQKeyboardManager.bundle in Resources */,
 				00CE48D1204D23E1008FC9DA /* LaunchScreen.storyboard in Resources */,
+				38F534B921E2E42300F92AD7 /* MeetingTypeCollectionViewCell.xib in Resources */,
 				222F6AAF20D6DDD6004EFA91 /* Montserrat in Resources */,
 				00CE48CE204D23E1008FC9DA /* Assets.xcassets in Resources */,
 				00CE48C9204D23E1008FC9DA /* Main.storyboard in Resources */,
@@ -591,6 +598,7 @@
 				0027D17420F4F1B5000A618D /* IQUIWindow+Hierarchy.swift in Sources */,
 				38A8C7EB218B3FB400376C6E /* DeviceInfo.swift in Sources */,
 				38A8C7F9218F6C3D00376C6E /* UserDeviceDetails+CoreDataProperties.swift in Sources */,
+				38F534B821E2E42300F92AD7 /* MeetingTypeCollectionViewCell.swift in Sources */,
 				0027D17720F4F1B5000A618D /* IQKeyboardManager.swift in Sources */,
 				0027D17120F4F1B5000A618D /* IQUITextFieldView+Additions.swift in Sources */,
 				0027D17B20F4F1B5000A618D /* IQPreviousNextView.swift in Sources */,
