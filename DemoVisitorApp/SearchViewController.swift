@@ -36,6 +36,31 @@ class SearchViewController: BaseviewController {
     var comingFrom: String = ""
     
     var searchParametes = [String: Any]()
+    
+    func setLogoImage() {
+        if let activationDetails = DeviceActivationDetails.checkDataExistOrNot(){
+            let url = URL(string: activationDetails.logoURL!)
+            companyLogo.kf.setImage(with: url,
+                                    placeholder: nil,
+                                    options: [.transition(ImageTransition.fade(1))],
+                                    progressBlock: { receivedSize, totalSize in
+                                        //                                        print("\(indexPath.row + 1): \(receivedSize)/\(totalSize)")
+            },
+                                    completionHandler: { image, error, cacheType, imageURL in
+                                        
+                                        //                                        print("\(indexPath.row + 1): Finished")
+                                        print(image?.size)
+                                        
+                                        self.logoHeightConstraint.constant = (image?.size.height)!
+                                        self.logoWidthConstraint.constant = (image?.size.width)!
+                                        //                                        self.companyLogo.image = image
+                                        //                                        cell.imageView?.image = self.resizeImage(image: image!, newWidth: 40.0)
+                                        
+            })
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,19 +71,11 @@ class SearchViewController: BaseviewController {
         let formatter = CheapDateFormatter.formatter()
         self.dateTimeLabel.text = formatter.string(from: date)
         
+        
         if let activationDetails = DeviceActivationDetails.checkDataExistOrNot(){
+            self.setLogoImage()
             
-            if activationDetails.logoURL != "" {
-                let url = URL(string: activationDetails.logoURL!)
-                ImageCache.default.removeImage(forKey: "logoKey")
-                let resource = ImageResource(downloadURL: url!, cacheKey: "logoKey")
-                companyLogo.kf.setImage(with: resource)
-            }else {
-                ImageCache.default.removeImage(forKey: "logoKey")
-                companyLogo.image = nil
-            }
             self.view.backgroundColor = activationDetails.appBackgroundColor()
-            
         }
         
         

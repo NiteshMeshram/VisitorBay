@@ -14,10 +14,10 @@ import Kingfisher
 
 class UserViewController: BaseviewController, UITextFieldDelegate {
     
+    @IBOutlet weak var titleTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var logoWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var companyLogo: UIImageView!
-    @IBOutlet weak var headerTitle: UILabel!
     @IBOutlet weak var personToMeetTextField: UITextField!
     @IBOutlet weak var companyTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -51,10 +51,29 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
     var isInPortrait = false
     
     var format : DateFormatter!
+
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+//            print(keyboardHeight)
+            self.titleTopConstraint.constant = 10
+        }
+    }
+
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        print("Keyboard will hide!")
+        self.titleTopConstraint.constant = 107
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         
         self.populateUIElemente()
         
@@ -95,7 +114,7 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
     
     func populateUIElemente() {
         if let titel = formData!["response"]["form caption"].string {
-            self.headerTitle.text = titel
+//            self.headerTitle.text = titel
         }
         formDataArray = formData!["formdata"].array!
         
@@ -273,7 +292,7 @@ class UserViewController: BaseviewController, UITextFieldDelegate {
         let xPos : CGFloat = 300
         var yPos : CGFloat = 250
         if let titel = formData!["response"]["form caption"].string {
-            self.headerTitle.text = titel
+//            self.headerTitle.text = titel
         }
         for (key,value) in Array(formData!["formdata"]).sorted(by: {$0.0 < $1.0}) {
             
@@ -525,6 +544,12 @@ class CustomUITextField: UITextField {
 
 extension UITextField {
     
+    open override func draw(_ rect: CGRect) {
+        self.layer.cornerRadius = 3.0
+        self.layer.borderWidth = 1.0
+        self.layer.borderColor = UIColor.darkGray.cgColor
+        self.layer.masksToBounds = true
+    }
     
 //    public var keyName : String {
 //        get

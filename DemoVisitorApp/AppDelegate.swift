@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.databasePath()
         
-        IQKeyboardManager.sharedManager().enable = true
+//        IQKeyboardManager.sharedManager().enable = true
         CoreDataStack.sharedInstance.applicationDocumentsDirectory()
         return true
     }

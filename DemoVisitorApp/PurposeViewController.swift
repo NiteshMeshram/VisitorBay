@@ -37,7 +37,7 @@ class PurposeViewController: BaseviewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        VisitorsDetailsManager.shared.finalUserData.removeAll()
         dataListArray = purposeTypeJSON!["meetingType"].array!
         
         // Do any additional setup after loading the view, typically from a nib.
